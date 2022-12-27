@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Analytics } from "@vercel/analytics/react";
 import { AppProps } from "next/app";
 import { WagmiConfig, createClient, configureChains, mainnet } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
@@ -22,6 +23,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <WagmiConfig client={client}>
       <Component {...pageProps} />
+      <Analytics />
     </WagmiConfig>
   );
 }
