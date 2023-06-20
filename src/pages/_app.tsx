@@ -1,29 +1,49 @@
 import React from "react";
 
-import { Analytics } from "@vercel/analytics/react";
 import { AppProps } from "next/app";
-import { WagmiConfig, createClient, configureChains, mainnet } from "wagmi";
+import { WagmiConfig, configureChains, createConfig } from "wagmi";
+import {
+  mainnet,
+  polygon,
+  optimism,
+  polygonMumbai,
+  arbitrumGoerli,
+  optimismGoerli,
+  arbitrum,
+  goerli,
+} from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 
 import "../styles/tailwind.scss";
-import { moonbase, moonbeam, moonriver } from "../networksInfo";
+// import { moonbase, moonbeam, moonriver } from "../networksInfo";
 
-const { provider, webSocketProvider } = configureChains(
-  [moonbase, moonbeam, moonriver, mainnet],
+const { chains, publicClient, webSocketPublicClient } = configureChains(
+  [
+    mainnet,
+    polygon,
+    optimism,
+    polygonMumbai,
+    arbitrumGoerli,
+    goerli,
+    optimismGoerli,
+    arbitrum,
+  ],
   [publicProvider()]
 );
 
-const client = createClient({
+const client = createConfig({
   autoConnect: true,
-  provider,
-  webSocketProvider,
+  publicClient,
+  webSocketPublicClient,
 });
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
-    <WagmiConfig client={client}>
-      <Component {...pageProps} />
-      <Analytics />
+    <WagmiConfig config={client}>
+      <div className="bg-slate-900">
+        <Component {...pageProps} />
+      </div>
+      {/* <Analytics /> */}
     </WagmiConfig>
   );
 }

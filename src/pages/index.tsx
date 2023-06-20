@@ -24,16 +24,13 @@ export default function Home() {
     <div>
       <Head>
         <title>Wagmi Moonbeam Next.js Template</title>
-
         <meta
           name="Wagmi Moonbeam Next.js Template"
           content="Wagmi Moonbeam Next.js Template"
         />
-
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className="flex min-h-screen justify-center bg-gradient-to-b from-gray-50 via-gray-50 to-gray-100 py-20">
+      <main className="py-500 flex min-h-screen items-center justify-center bg-gradient-to-b from-slate-900 via-slate-700 to-slate-900 text-white">
         <div className="flex-col space-y-4 text-center">
           <h1 className="text-center text-4xl font-bold sm:mt-4 sm:text-6xl">
             Wagmi
@@ -69,7 +66,7 @@ function ConnectWallet() {
     </div>
   ) : (
     <button
-      className="rounded-md border p-2 hover:bg-gray-100"
+      className="rounded-md border p-2 hover:bg-gray-100 hover:text-slate-900"
       onClick={() => connect()}
     >
       Connect Wallet
@@ -82,7 +79,7 @@ function SwitchTo({ toChain }) {
 
   return isError && error?.name === "ChainNotConfigured" ? (
     <button
-      className="rounded-md border p-2 hover:bg-gray-100"
+      className="rounded-md border p-2 hover:bg-gray-100 hover:text-slate-900"
       onClick={() =>
         window.open(
           `https://chainlist.org/chain/${toChain.id}`,
@@ -95,7 +92,7 @@ function SwitchTo({ toChain }) {
     </button>
   ) : (
     <button
-      className="rounded-md border p-2 hover:bg-gray-100"
+      className="rounded-md border p-2 hover:bg-gray-100 hover:text-slate-900"
       onClick={() => switchNetwork(toChain.id)}
     >
       Switch to {toChain.name}
