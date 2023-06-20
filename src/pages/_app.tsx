@@ -11,6 +11,9 @@ import {
   optimismGoerli,
   arbitrum,
   goerli,
+  moonbeam,
+  moonriver,
+  moonbaseAlpha,
 } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 
@@ -27,6 +30,9 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     goerli,
     optimismGoerli,
     arbitrum,
+    moonbeam,
+    moonriver,
+    moonbaseAlpha,
   ],
   [publicProvider()]
 );

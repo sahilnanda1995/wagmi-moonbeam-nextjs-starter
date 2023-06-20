@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import Head from "next/head";
 import { useAccount, useConnect, useNetwork, useSwitchNetwork } from "wagmi";
+import { moonbaseAlpha, moonbeam, moonriver } from "wagmi/chains";
 import { InjectedConnector } from "wagmi/connectors/injected";
-
-import { moonbase, moonbeam, moonriver } from "../networksInfo";
 
 export default function Home() {
   const [hasMounted, setHasMounted] = useState(false);
@@ -41,7 +40,9 @@ export default function Home() {
           <ConnectWallet />
           {isConnected && (
             <div className="flex flex-col space-y-4">
-              {chain.id != moonbase.id && <SwitchTo toChain={moonbase} />}
+              {chain.id != moonbaseAlpha.id && (
+                <SwitchTo toChain={moonbaseAlpha} />
+              )}
               {chain.id != moonriver.id && <SwitchTo toChain={moonriver} />}
               {chain.id != moonbeam.id && <SwitchTo toChain={moonbeam} />}
             </div>
